@@ -9,7 +9,7 @@ A production-oriented RAG (Retrieval-Augmented Generation) backend built with Fa
 | Layer | Technology | Reason |
 |---|---|---|
 | API Framework | FastAPI | Async-native, Pydantic validation, auto-generates OpenAPI docs |
-| LLM & Embeddings | Google GenAI SDK (2026) | Official modern SDK — avoids deprecated `google-generativeai` |
+| LLM & Embeddings | Gemini API | Generates document embeddings and handles chat responses through a single client. |
 | Vector Store | Pinecone | Managed cosine similarity search, serverless-friendly |
 | Chat Memory | Redis | Session-scoped history caching without ORM overhead |
 | Relational Store | SQLAlchemy + SQLite | Structured metadata and booking transaction persistence |
@@ -55,7 +55,9 @@ Confirmed bookings are written to the SQLite database transactionally.
 The modern Gemini embedding model outputs 3,072-dimensional vectors by default. Rather than rebuilding the Pinecone index, the embedding call passes `output_dimensionality=768` inside `EmbedContentConfig`, exploiting native MRL truncation at the API level. Accuracy loss is minimal.
  
 ### Generation Failover
-The primary generation call is wrapped in a try-except targeting `503 UNAVAILABLE` (Google's high-demand response). On failure, traffic is automatically routed to a lighter model instance — the client never sees the error.
+The Issue: During load testing, the primary generation model occasionally returned transient service errors due to server demand spikes at the public endpoints.
+
+The Fix: Built an automated failover handler in the generation tier. The system catches connection exceptions on the primary model and instantly routes the conversation through a secondary model instance to ensure client requests do not fail.
  
 ---
  
