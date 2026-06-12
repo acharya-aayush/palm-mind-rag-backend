@@ -106,7 +106,7 @@ strategy: recursive | character
  
 **Success (200):**
  
-![Ingestion Success](public/images/1.png)
+![Ingestion Success](app/docs/ingestion.png)
  
 ---
  
@@ -115,16 +115,16 @@ strategy: recursive | character
 ```
 POST /api/v1/chat
 Content-Type: application/json
- 
+
 {
-  "message": "What is the notice period policy?",
-  "session_id": "user-abc-123"
+  "message": "What is the notice period mentioned in the company policy?",
+  "session_id": "candidate_test_session"
 }
 ```
  
 **Success (200):**
  
-![RAG Response](public/images/2.png)
+![RAG Response](app/docs/rag_response.png)
  
 ---
  

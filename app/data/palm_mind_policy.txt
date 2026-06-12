@@ -1,0 +1,13 @@
+Palm Mind Technology - Internal Recruitment & Engineering Policy Guidelines
+
+1. Employment Commitment and Notice Period
+All engineering team members and backend interns selected through the Skill Lab pipeline must commit to a minimum continuous tenure of one (1) year with Palm Mind Technology. In the event of resignation or separation, the mandatory corporate notice period is exactly two (2) months to ensure proper knowledge transfer.
+
+2. Interview Architecture & Selection Process
+The technical hiring cycle consists of a 48-hour practical take-home system evaluation, followed by a live engineering architecture review, and concludes with a cultural-fit interview with HR Management led by Pratima Giri.
+
+3. Engineering Stack Standards
+The core infrastructure at Palm Mind relies on production-grade asynchronous Python microservices, distributed relational storage systems (PostgreSQL), high-speed state caching layers (Redis), and multi-vector similarity search engines.
+
+4. Core Working Hours
+The engineering department operates on a hybrid framework based in Kathmandu. Core collaboration hours are Monday through Friday, 9:00 AM to 6:00 PM NST.
